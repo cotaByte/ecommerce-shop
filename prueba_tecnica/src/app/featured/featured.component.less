@@ -1,0 +1,63 @@
+@import '../app.component.less';
+
+.img-feature {
+    width: 100%;
+    height: auto;
+}
+
+.feature {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.txt-img-feature {
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0 50px;
+    background-color: #fff;
+    font-weight: 800;
+}
+
+.footer-feature>article {
+    flex: 1;
+    box-sizing: border-box;
+    margin-left: 10px;
+
+}
+
+.rigth {
+    text-align: right;
+}
+
+.also-buy-items {
+    display: flex;
+    flex: 1;
+
+    article {
+        flex: 1;
+        padding: 20px;
+        border: 1px solid sienna;
+        box-sizing: border-box;
+    }
+}
+
+
+/* Mobile avg widht resolution*/
+@media (max-width: 867px) {
+    .footer-feature {
+        flex-direction: column;
+
+        article {
+            margin-bottom: 15px;
+        }
+    }
+
+    .rigth {
+        text-align: left;
+    }
+}

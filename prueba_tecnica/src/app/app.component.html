@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-
 <body>
-
   <header>
       <img src="../assets/img/bejamasLogo.png"  class="img-logo" alt="BEJAMAS_">
     <div class="filler">
@@ -15,8 +6,38 @@
       <img src="../assets/img/shopping_cart_icon.png" class="img-shop-cart" alt="BEJAMAS_">
   </header>
   <hr>
-  <!-- Here the featured image-->
-  <hr> 
-  <!-- Here the selection of images-->
+<app-featured [featured]="featured"></app-featured>
+  <hr>
+  <section class="pageSelector">
+    <article class="head-title">
+        <span class="title">Photography <span style="color: #656565;">/ Premium photos</span></span>
+        <div class="filler"></div>
+        <div>
+          <img src="../assets/img/sort_arrows.png" alt="sorting">
+        </div>
+        <span>Sort by &nbsp;</span>
+        <span>Price</span>
+    </article>
+    <div class="split-section">
+      <div class="categories">
+        <span>Category</span>
+        <br>
+        <br>
+        <div *ngFor="let i of categories">
+          <label>
+            <input type="checkbox" id="{{i.id}}" value="{{i.value}}"/>
+            {{i.name}}
+          </label>
+        </div>
+      </div>
+
+      <div class="product-canvas">
+        <div  *ngFor="let i of products" class="product" >
+            <product [product]="i"></product>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
-</html>
+<footer>
+</footer>

@@ -1,0 +1,22 @@
+<!--<article>
+        <div class="prod-img-container"></div>
+        <img class="prod-img" src={{product?.image?.src}} alt={{product?.image?.alt}}>
+        <div>
+            <span class="prod-cat">{{product?.category}}</span>
+            <strong class="prod-name">{{product?.name}}</strong>
+            <span class="prod-price">{{product?.currency}}{{ product?.price}}</span>
+        </div>
+</article> -->
+
+<body>
+    <div>
+        <div class="prod-img-container">
+            <img class="prod-img" src={{product?.image?.src}} alt={{product?.image?.alt}}>
+        </div>
+        <div class="prod-info">
+            <p class="prod-cat">{{product?.category}}</p>
+            <p class="prod-name">{{product?.name}}</p>
+            <p class="prod-price">{{product?.currency}}{{product?.price}}</p>
+        </div>
+    </div>
+</body>
