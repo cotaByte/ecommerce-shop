@@ -8,20 +8,35 @@
   <hr>
   <product [product]="featured"></product>
   <hr>
-  <section class="pageSelector">
-    <article class="head-title">
+  <section >
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <article class="head-title flex-row ">
         <span class="title">Photography <span style="color: #656565;">/ Premium photos</span></span>
-        <img  class="cat-modal-icon" src="../assets/img/filters.png" alt="filters" (click)="openModal()">
-          <img src="../assets/img/sort_arrows.png" alt="sorting">
-        <categories [isModal]="isModalOpen" (openModal)="openModal()" *ngIf="isModalOpen">
-          <button (click)="closeModal()">X</button>
-        </categories>
-        <span>Sort by &nbsp;</span>
-        <span>Price</span>
+
+        <img  class="cat-modal-icon" src="../assets/img/filters.png" alt="filters" (click)="openCategories()">
+        <img class="sorting" src="../assets/img/sort_arrows.png" alt="sorting">
+        <span class="sorting">Sort by &nbsp;</span>
+        <span class="sorting">Price</span>
     </article>
+
+
+
     <div class="split-section">
       <div class="categories">
-        <categories></categories>
+        <categories [modal]="false"></categories>
       </div>
       <div class="product-canvas">
         <div  *ngFor="let i of products" class="product" >

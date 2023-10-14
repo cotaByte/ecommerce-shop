@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 import { ProductComponent } from './product/component/product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoriesComponent } from './categories/component/categories.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,9 +17,14 @@ import { CategoriesComponent } from './categories/component/categories.component
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    
   ],
-  providers: [],
+  providers: [
+    //{ provide: MAT_DIALOG_DATA, useValue: {} },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

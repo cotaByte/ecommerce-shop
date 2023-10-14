@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ProductService } from './product/services/product-service.service';
 import { Product } from './product/model/product';
+import { CategoriesComponent } from './categories/component/categories.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,7 +15,7 @@ export class AppComponent {
   featured!: Product | undefined;
   products:Product[]=[];
 
-  constructor(private photoServices:ProductService){}
+  constructor(private photoServices:ProductService, private dialog:MatDialog){}
 
 
   ngOnInit():void{
@@ -24,8 +26,22 @@ export class AppComponent {
     });
   }
   
-  openModal() {
-    this.isModalOpen = true;
+
+
+  openCategories() {
+    const dialogConfig = new MatDialogConfig();
+    
+    // Configuración para centrar el dialog
+    dialogConfig.position = {
+      top: '0', // Centra verticalmente
+      left: '0', // Centra horizontalmente
+    };
+    dialogConfig.width='100vw';
+    dialogConfig.height='100vh';
+
+
+    const dialogRef = this.dialog.open(CategoriesComponent,dialogConfig
+      );
   }
 
   closeModal() {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, Output, inject } from '@angular/core';
 
 @Component({
   selector: 'categories',
@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./categories.component.less']
 })
 export class CategoriesComponent {
-  @Input () isModal:boolean=false;
+  @Input () modal:boolean=true;
   @Output() openModal = new EventEmitter<void>();
   categories: any=[
     {name:'People',id:'1',value:'people'},
@@ -17,5 +17,6 @@ export class CategoriesComponent {
     {name:'Cities',id:'6',value:'cities'},
     {name:'Nature',id:'7',value:'nature'},
   ];
+
 
 }

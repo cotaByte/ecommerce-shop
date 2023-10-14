@@ -1,21 +1,21 @@
-<div *ngIf="!isModal" class="modal">
+<div *ngIf="!modal">
     <h4>Cateogry</h4>
-        <div >
-            <label *ngFor="let i of categories">
-                <input type="checkbox" id="{{i.id}}" value="{{i.value}}"/>
-                {{i.name}}
-            </label>
-            </div>
-    </div>
-
-
-  <div *ngIf="isModal">
-    <ng-content></ng-content>
-    <h4>Cateogry</h4>
-    <div >
+    <div>
         <label *ngFor="let i of categories">
             <input type="checkbox" id="{{i.id}}" value="{{i.value}}"/>
             {{i.name}}
         </label>
         </div>
+    </div>
+
+<div *ngIf="modal">
+    <button mat-button mat-dialog-close>X</button>
+    <h4>Cateogry</h4>
+    <div>
+        <label *ngFor="let i of categories">
+            <input type="checkbox" id="{{i.id}}" value="{{i.value}}"/>
+            {{i.name}}
+        </label>
+        </div>
+
 </div>
