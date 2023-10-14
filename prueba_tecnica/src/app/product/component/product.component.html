@@ -1,22 +1,39 @@
-<!--<article>
-        <div class="prod-img-container"></div>
-        <img class="prod-img" src={{product?.image?.src}} alt={{product?.image?.alt}}>
-        <div>
-            <span class="prod-cat">{{product?.category}}</span>
-            <strong class="prod-name">{{product?.name}}</strong>
-            <span class="prod-price">{{product?.currency}}{{ product?.price}}</span>
-        </div>
-</article> -->
-
 <body>
-    <div>
-        <div class="prod-img-container">
-            <img class="prod-img" src={{product?.image?.src}} alt={{product?.image?.alt}}>
+    <div class="prod-img-container">
+        <img [ngClass]="product?.featured? 'prod-img-featured':'prod-img-regular'" src={{product?.image?.src}} alt={{product?.image?.alt}} >
+            <div *ngIf="product?.featured===true" class="txt-img-featured">
+            <p>Photo of the day</p>
+            </div>
+            <div *ngIf="product?.bestseller===true" class="txt-img-bestseller">
+                <p>Bestseller</p>
+                </div>
         </div>
-        <div class="prod-info">
+    <div>
+        <div *ngIf="product?.featured===false" class="prod-info">
             <p class="prod-cat">{{product?.category}}</p>
             <p class="prod-name">{{product?.name}}</p>
             <p class="prod-price">{{product?.currency}}{{product?.price}}</p>
         </div>
+
+        <div  *ngIf="product?.featured===true"class=" split-section footer-feature">
+            <article class="text-section">
+            <div class="title">
+                <span > About the {{product?.name}}</span>
+            </div>
+            <span class="subtitle">{{product?.category}}</span>
+            <p>{{product?.description}}</p>
+            </article>
+            <article>
+            <div class="title rigth">
+                <span >People also buy</span>
+            </div>
+            <div class="also-buy-items">
+                <article>Elem1</article>
+                <article>Elem2</article>
+                <article>Elem3</article>
+            </div>
+            </article>
+        </div>
+
     </div>
 </body>

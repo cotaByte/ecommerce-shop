@@ -16,7 +16,6 @@ body {
     padding: 10px;
 }
 
-
 hr {
     border: 0;
     border-top: 5px solid #E4E4E4;
@@ -24,15 +23,18 @@ hr {
     margin-bottom: 35px;
 }
 
-button {
-    background-color: @black;
-    color: #fff;
-    border: 0;
-    padding: 5px 60px;
+footer {
     font-family: @font;
-    font-size: 1.2rem;
-    font-weight: @letter-bold;
+    display: flex;
 
+    button {
+        border: 0;
+        margin: 0;
+        background-color: #fff;
+        color: @black;
+        font-size: 1rem;
+
+    }
 }
 
 .filler {
@@ -111,7 +113,23 @@ article>p {
 
 .product {
     width: 100%;
-    border: 1px solid red;
+    //border: 1px solid red;
+}
+
+.img-feature {
+    width: 100%;
+    height: auto;
+}
+
+button {
+    background-color: @black;
+    color: #fff;
+    border: 0;
+    padding: 5px 60px;
+    font-family: @font;
+    font-size: 1.2rem;
+    font-weight: @letter-bold;
+
 }
 
 /* Mobile avg widht resolution*/
@@ -125,9 +143,4 @@ article>p {
         width: 100%;
         display: block;
     }
-}
-
-.img-feature {
-    width: 100%;
-    height: auto;
 }

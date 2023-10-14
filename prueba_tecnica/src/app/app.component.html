@@ -6,7 +6,13 @@
       <img src="../assets/img/shopping_cart_icon.png" class="img-shop-cart" alt="BEJAMAS_">
   </header>
   <hr>
-<app-featured [featured]="featured"></app-featured>
+  <div class="head-title">
+    <span class="title">{{featured?.name}}</span>
+    <div class="filler"></div>
+    <button >ADD TO CART</button>
+</div>
+
+  <product [product]="featured"></product>
   <hr>
   <section class="pageSelector">
     <article class="head-title">
@@ -15,22 +21,17 @@
         <div>
           <img src="../assets/img/sort_arrows.png" alt="sorting">
         </div>
+        <img src="../assets/img/filters.png" alt="filters" (click)="openModal()">
+        <categories [isModal]="isModalOpen" (openModal)="openModal()" *ngIf="isModalOpen">
+          <button (click)="closeModal()">X</button>
+        </categories>
         <span>Sort by &nbsp;</span>
         <span>Price</span>
     </article>
     <div class="split-section">
       <div class="categories">
-        <span>Category</span>
-        <br>
-        <br>
-        <div *ngFor="let i of categories">
-          <label>
-            <input type="checkbox" id="{{i.id}}" value="{{i.value}}"/>
-            {{i.name}}
-          </label>
-        </div>
+        <categories></categories>
       </div>
-
       <div class="product-canvas">
         <div  *ngFor="let i of products" class="product" >
             <product [product]="i"></product>
@@ -40,4 +41,8 @@
   </section>
 </body>
 <footer>
+  <div class="filler"></div>
+  <button>Anterior</button>
+  <button>Siguiente</button>
+  <div class="filler"></div>
 </footer>

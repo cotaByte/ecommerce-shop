@@ -7,19 +7,12 @@ import { Product } from './product/model/product';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
+  isModalOpen:boolean=false;
   currentPage:number=1;
   cart:Product[]=[];
   featured!: Product | undefined;
   products:Product[]=[];
-  categories: any=[
-    {name:'People',id:'1',value:'people'},
-    {name:'Premium',id:'2',value:'premium'},
-    {name:'Pets',id:'3',value:'pets'},
-    {name:'Food',id:'4',value:'food'},
-    {name:'Landmarks',id:'5',value:'landmarks'},
-    {name:'Cities',id:'6',value:'cities'},
-    {name:'Nature',id:'7',value:'nature'},
-  ];
+
   constructor(private photoServices:ProductService){}
 
 
@@ -30,4 +23,14 @@ export class AppComponent {
       if (this.featured)this.products= this.products.filter(prod=>prod !== this.featured);     
     });
   }
+  
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+  
 }
+
