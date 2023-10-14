@@ -6,22 +6,13 @@
       <img src="../assets/img/shopping_cart_icon.png" class="img-shop-cart" alt="BEJAMAS_">
   </header>
   <hr>
-  <div class="head-title">
-    <span class="title">{{featured?.name}}</span>
-    <div class="filler"></div>
-    <button >ADD TO CART</button>
-</div>
-
   <product [product]="featured"></product>
   <hr>
   <section class="pageSelector">
     <article class="head-title">
         <span class="title">Photography <span style="color: #656565;">/ Premium photos</span></span>
-        <div class="filler"></div>
-        <div>
+        <img class="cat-modal-icon" src="../assets/img/filters.png" alt="filters" (click)="openModal()">
           <img src="../assets/img/sort_arrows.png" alt="sorting">
-        </div>
-        <img src="../assets/img/filters.png" alt="filters" (click)="openModal()">
         <categories [isModal]="isModalOpen" (openModal)="openModal()" *ngIf="isModalOpen">
           <button (click)="closeModal()">X</button>
         </categories>
@@ -42,7 +33,7 @@
 </body>
 <footer>
   <div class="filler"></div>
-  <button>Anterior</button>
-  <button>Siguiente</button>
+  <button [disabled]="currentPage==1">Anterior</button>
+  <button [disabled]="currentPage==9">Siguiente</button>
   <div class="filler"></div>
 </footer>

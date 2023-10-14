@@ -10,4 +10,6 @@ export class ProductComponent {
 
 
   @Input () product: Product|undefined;
+  @Input () minimized:boolean=false;
+  
 }
