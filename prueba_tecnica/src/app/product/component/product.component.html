@@ -8,7 +8,8 @@
         <img [ngClass]="{
             'prod-img-featured': product?.featured,
             'prod-img-regular': !product?.featured,
-            }" src={{product?.image?.src}} alt={{product?.image?.alt}} >
+            'minimized':minimized}"
+            src={{product?.image?.src}} alt={{product?.image?.alt}} >
             <div *ngIf="product?.featured===true" class="txt-img-featured">
             <p>Photo of the day</p>
             </div>

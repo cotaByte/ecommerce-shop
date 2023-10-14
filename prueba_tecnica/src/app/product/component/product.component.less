@@ -77,6 +77,10 @@
     text-align: right;
 }
 
+.minimized {
+    height: 30vw;
+}
+
 .also-buy-items {
     display: flex;
     flex: 1;
@@ -93,16 +97,23 @@
     }
 }
 
-
-
 /* Mobile avg widht resolution*/
-@media (max-width: 420px) {
+@media (max-width: 768px) {
     .footer-feature {
         flex-direction: column;
 
         article {
             margin-bottom: 15px;
         }
+    }
+
+
+    .prod-img-regular {
+        height: 50vh;
+    }
+
+    .minimized {
+        height: 30vh;
     }
 
     .rigth {
