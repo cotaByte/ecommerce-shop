@@ -3,13 +3,13 @@ import { ProductService } from './product/services/product-service.service';
 import { Product } from './product/model/product';
 import { CategoriesComponent } from './categories/component/categories.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { CartComponent } from './cart/component/cart.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  isModalOpen:boolean=false;
   currentPage:number=1;
   cart:Product[]=[];
   featured!: Product | undefined;
@@ -31,26 +31,17 @@ export class AppComponent {
   openCategories() {
     const dialogConfig = new MatDialogConfig();
     
-    // Configuración para centrar el dialog
-    dialogConfig.position = {
-      top: '90', // Centra verticalmente
-      left: '0', // Centra horizontalmente
-    };
     dialogConfig.width='100vw';
-    dialogConfig.height='600px';
-
-
     const dialogRef = this.dialog.open(CategoriesComponent,dialogConfig
       );
   }
 
-  closeModal() {
-    this.isModalOpen = false;
-  }
-  
+  openCart(){
+    const dialogConfig = new MatDialogConfig();
 
-  guarda(){
-    debugger;
+    dialogConfig.width='400px';
+    const dialogRef = this.dialog.open(CartComponent,dialogConfig
+      );
   }
 }
 

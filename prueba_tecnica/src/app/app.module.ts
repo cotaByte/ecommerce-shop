@@ -8,11 +8,13 @@ import { CategoriesComponent } from './categories/component/categories.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CartComponent } from './cart/component/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     CategoriesComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

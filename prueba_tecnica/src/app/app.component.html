@@ -3,44 +3,26 @@
       <img src="../assets/img/bejamasLogo.png"  class="img-logo" alt="BEJAMAS_">
     <div class="filler">
     </div>
-      <img src="../assets/img/shopping_cart_icon.png" class="img-shop-cart" alt="BEJAMAS_">
+      <img src="../assets/img/shopping_cart_icon.png" class="img-shop-cart" alt="cart_icon" (click)="openCart()">
   </header>
   <hr>
   <product [product]="featured"></product>
   <hr>
   <section >
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
     <article class="head-title flex-row ">
-        <span class="title">Photography <span style="color: #656565;">/ Premium photos</span></span>
-
-        <img  class="cat-modal-icon" src="../assets/img/filters.png" alt="filters" (click)="openCategories()">
-        <img class="sorting" src="../assets/img/sort_arrows.png" alt="sorting">
-        <span class="sorting">Sort by &nbsp;</span>
-        <span class="sorting">Price</span>
+      <span class="title">Photography <span style="color: #656565;">/ Premium photos</span></span>
+      <img  class="cat-modal-icon" src="../assets/img/filters.png" alt="filters" (click)="openCategories()">
+      <img class="sorting" src="../assets/img/sort_arrows.png" alt="sorting">
+      <span class="sorting">Sort by &nbsp;</span>
+      <span class="sorting">Price</span>
     </article>
-
-
-
     <div class="split-section">
       <div class="categories">
         <categories [modal]="false"></categories>
       </div>
       <div class="product-canvas">
         <div  *ngFor="let i of products" class="product" >
-            <product [product]="i"></product>
+          <product [product]="i"></product>
         </div>
       </div>
     </div>
