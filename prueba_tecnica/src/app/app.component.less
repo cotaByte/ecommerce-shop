@@ -111,6 +111,11 @@ article>p {
 
 }
 
+.icon {
+    width: 25px;
+    height: 25px;
+}
+
 .categories {
     flex: 1;
     min-width: 20%;
@@ -143,7 +148,7 @@ button {
 }
 
 
-.cat-modal-icon {
+.cat-modal {
     display: none;
 }
 
@@ -158,12 +163,13 @@ ng::deep .mat-mdc-dialog-container {
         padding: 0px;
     }
 
+
     .categories,
     .sorting {
         display: none;
     }
 
-    .cat-modal-icon {
+    .cat-modal {
         display: flex;
         width: 23px;
         height: 23px;
@@ -171,6 +177,7 @@ ng::deep .mat-mdc-dialog-container {
 
     .head-title {
         flex-direction: column;
+        padding: 10px;
 
         span {
             font-size: 110% !important;
