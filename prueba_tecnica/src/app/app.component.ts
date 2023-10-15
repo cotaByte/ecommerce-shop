@@ -33,11 +33,11 @@ export class AppComponent {
     
     // Configuración para centrar el dialog
     dialogConfig.position = {
-      top: '0', // Centra verticalmente
+      top: '90', // Centra verticalmente
       left: '0', // Centra horizontalmente
     };
     dialogConfig.width='100vw';
-    dialogConfig.height='100vh';
+    dialogConfig.height='600px';
 
 
     const dialogRef = this.dialog.open(CategoriesComponent,dialogConfig
@@ -48,5 +48,9 @@ export class AppComponent {
     this.isModalOpen = false;
   }
   
+
+  guarda(){
+    debugger;
+  }
 }
 

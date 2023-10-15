@@ -19,4 +19,15 @@ export class CategoriesComponent {
   ];
 
 
+
+  guarda(){
+    debugger;
+    console.log("guarda")
+  }
+  
+  
+  limpia(){
+    debugger;
+    console.log("limpia")
+  }
 }
