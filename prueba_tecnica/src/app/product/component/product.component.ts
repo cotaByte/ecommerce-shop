@@ -11,5 +11,10 @@ export class ProductComponent {
 
   @Input () product: Product|undefined;
   @Input () minimized:boolean=false;
+
+
+  addToCart(){
+    console.log("a la saca");
+  }
   
 }

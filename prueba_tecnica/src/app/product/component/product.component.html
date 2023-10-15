@@ -1,4 +1,4 @@
-<body>
+<div class="product">
 
     <div *ngIf="product?.featured===true"class="head-title">
         <span class="title">{{product?.name}}</span>
@@ -11,17 +11,22 @@
             'minimized':minimized}"
             src={{product?.image?.src}} alt={{product?.image?.alt}} >
             <div *ngIf="product?.featured===true" class="txt-img-featured">
-            <p>Photo of the day</p>
+                <p>Photo of the day</p>
             </div>
             <div *ngIf="product?.bestseller===true" class="txt-img-bestseller">
                 <p>Best Seller</p>
-                </div>
+            </div>
+
+            <div *ngIf="product?.featured===false" class="additional-text" (click)="addToCart()">
+                <p>ADD TO CART</p>
+            </div>
+
         </div>
     <div>
         <div *ngIf="product?.featured===false" class="prod-info">
             <p class="prod-cat">{{product?.category}}</p>
             <p class="prod-name">{{product?.name}}</p>
-            <p class="prod-price">{{product?.currency}}{{product?.price}}</p>
+            <p class="prod-price">{{product?.currency}} {{product?.price}}</p>
         </div>
 
         <div  *ngIf="product?.featured===true"class=" split-section footer-feature">
@@ -32,18 +37,17 @@
             <span class="subtitle">{{product?.category}}</span>
             <p>{{product?.description}}</p>
             </article>
+            
             <article>
             <div class="title rigth">
                 <span >People also buy</span>
             </div>
-            <div class="also-buy-items">
-                
+            <div class="also-buy-items">  
                 <article *ngFor="let i of product?.people_also_buy">
                     <product [product]="i" [minimized]="true"></product>
                 </article>
             </div>
             </article>
         </div>
-
     </div>
-</body>
+</div>

@@ -27,10 +27,8 @@
       </div>
     </div>
   </section>
+  <footer>
+    <button [disabled]="currentPage==1">PREV</button>
+    <button [disabled]="currentPage==9">NEXT</button>
+  </footer>
 </body>
-<footer>
-  <div class="filler"></div>
-  <button [disabled]="currentPage==1">Anterior</button>
-  <button [disabled]="currentPage==9">Siguiente</button>
-  <div class="filler"></div>
-</footer>

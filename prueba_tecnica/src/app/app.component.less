@@ -12,9 +12,10 @@ header {
 
 body {
     font-family: @font;
-    //margin: 0 auto;
+    margin: 0 auto;
     max-width: 1440px;
     height: auto;
+    padding: 10px 40px;
 }
 
 hr {
@@ -26,16 +27,27 @@ hr {
 
 footer {
     font-family: @font;
+    text-align: center;
+    padding: 10px;
+    bottom: 0;
+    left: 0;
     display: flex;
+    justify-content: center;
+}
 
-    button {
-        border: 0;
-        margin: 0;
-        background-color: #fff;
-        color: @black;
-        font-size: 2vw;
+footer>button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: white;
+    color: @black;
+    border: 2px solid @black;
+}
 
-    }
+footer>button:disabled {
+    border: 2px solid #474747;
+    background-color: silver;
+    color: #474747;
 }
 
 .filler {
@@ -55,6 +67,7 @@ footer {
 .head-title {
     margin-bottom: 20px;
     display: flex;
+    gap: 12px;
 
     span:first-of-type {
         font-size: 2rem;
@@ -140,6 +153,10 @@ ng::deep .mat-mdc-dialog-container {
 
 /* Mobile avg widht resolution*/
 @media (max-width: 768px) {
+
+    body {
+        padding: 0px;
+    }
 
     .categories,
     .sorting {
