@@ -4,6 +4,8 @@ import { Product } from './product/model/product';
 import { CategoriesComponent } from './categories/component/categories.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CartComponent } from './cart/component/cart.component';
+import { Observable } from 'rxjs/internal/Observable';
+import { CartServiceService } from './cart/service/cart-service.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,14 +13,22 @@ import { CartComponent } from './cart/component/cart.component';
 })
 export class AppComponent {
   currentPage:number=1;
-  cart:Product[]=[];
+  cartItems!: Observable<Product[]>;
+  cartItemCount:number=0;
   featured!: Product | undefined;
   products:Product[]=[];
 
-  constructor(private photoServices:ProductService, private dialog:MatDialog){}
+  constructor(
+    private photoServices:ProductService,
+    private dialog:MatDialog,
+    private cartService:CartServiceService){
+    }
 
 
   ngOnInit():void{
+
+    this.cartItems = this.cartService.cartItems$;
+    this.cartItems.subscribe(items => this.cartItemCount = items.length);
     this.photoServices.getProducts(this.currentPage).subscribe(res=>{
       this.products= res.data.data;
       this.featured = this.products.find(prod => prod.featured === true) || this.featured;
@@ -29,19 +39,12 @@ export class AppComponent {
 
 
   openCategories() {
-    const dialogConfig = new MatDialogConfig();
-    
-    dialogConfig.width='100vw';
-    const dialogRef = this.dialog.open(CategoriesComponent,dialogConfig
-      );
+    const dialogRef = this.dialog.open(CategoriesComponent,{width:'100vw'});
   }
 
   openCart(){
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.width='400px';
-    const dialogRef = this.dialog.open(CartComponent,dialogConfig
-      );
+    const dialogRef = this.dialog.open(CartComponent,{width:'400px'});
   }
+
 }
 

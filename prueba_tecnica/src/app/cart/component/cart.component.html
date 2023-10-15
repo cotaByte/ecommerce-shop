@@ -2,19 +2,27 @@
     <span >Cart</span>
     <button class="btn-close-modal" mat-button mat-dialog-close >X</button>
 </div>
-<div class="cart">
 
-    <div  class="cart-prod"*ngFor="let i of [1,2,3,1,1,1]">
-        <div class="product-info">
-            <h4 class="cart-prod-title">Samurai King Resting Resting Resting </h4>
-            <h3 class="cart-prod-subtitle">EUR 10000.0</h3>
+<div class="cart" >
+    
+    <ng-template [ngIf]="cartItemCount>0" [ngIfElse]="noItems">
+        
+    <div class="cart-prod"*ngFor="let product of cartItems |async">
+            <div class="product-info">
+                <h4 class="cart-prod-title">{{product.name}}</h4>
+                <h3 class="cart-prod-subtitle">{{product.currency}} {{product.price}}</h3>
+            </div>
+            <div >
+                <img src="{{product.image.src}}" alt="{{product.image.alt}}">
+            </div>
         </div>
-        <div class="img_prod-cart">
-            <img src="https://technical-frontend-api.bokokode.com/img/Product_Featured_product.png" alt="feature">
-        </div>
+        <hr>
+        <footer>
+            <button class="btn-clear" (click)="clearCart()">CLEAR</button>
+        </footer>
+    </ng-template>
+
+    <ng-template #noItems>
+        <span>No items in the cart</span>
+    </ng-template>
     </div>
-    <hr>
-    <footer>
-        <button class="btn-clear">CLEAR</button>
-    </footer>
-</div>

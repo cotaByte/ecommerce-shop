@@ -2,7 +2,7 @@
 
     <div *ngIf="product?.featured===true"class="head-title">
         <span class="title">{{product?.name}}</span>
-        <button >ADD TO CART</button>
+        <button (click)="addToCart()">ADD TO CART</button>
     </div>
     <div class="prod-img-container">
         <img [ngClass]="{
