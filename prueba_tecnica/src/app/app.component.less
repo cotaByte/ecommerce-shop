@@ -50,6 +50,22 @@ footer>button:disabled {
     color: #474747;
 }
 
+
+
+.cart-badge {
+    background-color: black;
+    color: white;
+    border-radius: 100%;
+    padding: 8px 8px;
+    font-size: 12px;
+    font-weight: bolder;
+    min-width: 20px;
+    max-height: 14px;
+    text-align: center;
+    margin: 4px 40px 0 0;
+    /* Centra el texto dentro del badge */
+}
+
 .filler {
     flex: 1;
 }
@@ -163,6 +179,9 @@ ng::deep .mat-mdc-dialog-container {
         padding: 0px;
     }
 
+    .cart-badge {
+        display: none;
+    }
 
     .categories,
     .sorting {

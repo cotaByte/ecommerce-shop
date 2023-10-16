@@ -3,8 +3,7 @@
       <img src="../assets/img/bejamasLogo.png"  class="img-logo" alt="BEJAMAS_">
     <div class="filler">
     </div>
-
-    <div>{{cartItemCount}}</div>
+    <div class="cart-badge" *ngIf="cartItemCount>0" (click)="openCart()">{{cartItemCount}}</div>
       <img src="../assets/img/shopping_cart_icon.png" class="img-shop-cart" alt="cart_icon" (click)="openCart()">
   </header>
   <hr>

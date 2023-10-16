@@ -26,7 +26,6 @@ export class AppComponent {
 
 
   ngOnInit():void{
-
     this.cartItems = this.cartService.cartItems$;
     this.cartItems.subscribe(items => this.cartItemCount = items.length);
     this.photoServices.getProducts(this.currentPage).subscribe(res=>{
@@ -35,8 +34,6 @@ export class AppComponent {
       if (this.featured)this.products= this.products.filter(prod=>prod !== this.featured);     
     });
   }
-  
-
 
   openCategories() {
     const dialogRef = this.dialog.open(CategoriesComponent,{width:'100vw'});
@@ -47,4 +44,3 @@ export class AppComponent {
   }
 
 }
-
