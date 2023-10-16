@@ -14,8 +14,11 @@
       <span class="title">Photography <span style="color: #656565;">/ Premium photos</span></span>
       <img  class="cat-modal icon" src="../assets/img/filters.png" alt="filters" (click)="openCategories()">
       <img class="sorting icon" src="../assets/img/sort_arrows.png" alt="sorting">
-      <span class="sorting">Sort by &nbsp;</span>
-      <span class="sorting">Price</span>
+      <label for="sorting" class="sorting">Sort by:</label>
+      <select id="sorting-cmb" [(ngModel)]="sortPropertySelected" class="sorting cmb" >
+        <option  value=""></option>
+        <option  *ngFor="let i of sortProperties" value="{{i.value}}">{{i.name}}</option>
+      </select>
     </article>
     <div class="split-section">
       <div class="categories">
@@ -29,7 +32,7 @@
     </div>
   </section>
   <footer>
-    <button [disabled]="currentPage==1">PREV</button>
-    <button [disabled]="currentPage==9">NEXT</button>
+    <button [disabled]="currentPage==1" (click)="prevPage()">PREV</button>
+    <button [disabled]="currentPage==9" (click)="nextPage()">NEXT</button>
   </footer>
 </body>

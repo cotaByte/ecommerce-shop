@@ -9,4 +9,4 @@ export const HEADERS={
 }
 };
 
-export const URL = 'https://technical-frontend-api.bokokode.com/api/products/';
+export const URL = 'https://technical-frontend-api.bokokode.com/api/products';

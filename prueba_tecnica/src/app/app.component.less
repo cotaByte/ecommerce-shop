@@ -50,19 +50,16 @@ footer>button:disabled {
     color: #474747;
 }
 
-
-
 .cart-badge {
     background-color: black;
     color: white;
-    border-radius: 100%;
-    padding: 8px 8px;
+    padding: 6px 6px;
     font-size: 12px;
     font-weight: bolder;
     min-width: 20px;
     max-height: 14px;
     text-align: center;
-    margin: 4px 40px 0 0;
+    margin: 8px 40px 0 0;
     /* Centra el texto dentro del badge */
 }
 
@@ -81,9 +78,11 @@ footer>button:disabled {
 }
 
 .head-title {
+
     margin-bottom: 20px;
     display: flex;
     gap: 12px;
+    align-items: center;
 
     span:first-of-type {
         font-size: 2rem;
@@ -163,6 +162,20 @@ button {
 
 }
 
+.cmb {
+    border: 0px;
+    background-color: white;
+    width: 120px;
+    color: black;
+    font-family: @font;
+    font-size: 1em;
+
+}
+
+.sorting {
+    display: flex;
+    align-items: center;
+}
 
 .cat-modal {
     display: none;
@@ -171,6 +184,8 @@ button {
 ng::deep .mat-mdc-dialog-container {
     position: absolute;
 }
+
+
 
 /* Mobile avg widht resolution*/
 @media (max-width: 768px) {
@@ -197,6 +212,7 @@ ng::deep .mat-mdc-dialog-container {
     .head-title {
         flex-direction: column;
         padding: 10px;
+        align-items: unset;
 
         span {
             font-size: 110% !important;

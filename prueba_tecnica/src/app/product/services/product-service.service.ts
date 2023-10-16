@@ -9,15 +9,10 @@ export class ProductService {
 
   constructor( private http:HttpClient) {}
 
-  getProducts(page:number=1){
-    
-    const params = new HttpParams().set('page',page);
+  getProducts(page:number){
     const headers=  new HttpHeaders(`${HEADERS}`);
-    return this.http.post<any>(`${URL}`,
-    {
-      headers,
-      params
-    });
+    const url= URL+'?page=' +page;
+    return this.http.post<any>(url,{headers,});
   }
 
 
