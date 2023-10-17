@@ -22,10 +22,17 @@ filterSort$= this.filterSortSubject.asObservable();
   }
 
   setSort(sortKey: string, sortType: string) {
+
     const currentFilterSort = this.filterSortSubject.value;
-    const newSort: any = { key: sortKey, type: sortType };
-    const newFilterSort: FilterSort = { ...currentFilterSort, sort: newSort };
-    this.filterSortSubject.next(newFilterSort);
+
+    if (sortKey) {
+      const newSort: any = { key: sortKey, type: sortType };
+      const newFilterSort: FilterSort = { ...currentFilterSort, sort: newSort };
+      this.filterSortSubject.next(newFilterSort);
+    } else {
+      const { sort, ...rest } = currentFilterSort;
+      this.filterSortSubject.next(rest);
+    }
     console.log("nuevo filter sort "+ JSON.stringify(this.filterSortSubject.value));
   }
 

@@ -86,7 +86,8 @@ export class AppComponent {
   }
 
   setChangeSorting(){
-    const sortingProperty= this.sortPropertySelected || this.sortProperties[0];
+    debugger;
+    const sortingProperty= this.sortPropertySelected || '';
     this.filtersortService.setSort(sortingProperty,this.sortType);
   }
 }
