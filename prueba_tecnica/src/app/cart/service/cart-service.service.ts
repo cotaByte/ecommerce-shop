@@ -14,7 +14,6 @@ export class CartServiceService {
       const currentCart = this.cartItemsSubject.value;
       const updatedCart = [...currentCart, product];
       this.cartItemsSubject.next(updatedCart);
-      console.table(updatedCart);
 }
 
   clearCart():void{

@@ -1,7 +1,5 @@
-import { Component, EventEmitter, Inject, Input, Output, inject } from '@angular/core';
-import { FilterSort } from 'src/app/shared/filterSort/model/filter-sort';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FilterSortServiceService } from 'src/app/shared/filterSort/service/filter-sort-service.service';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'categories',
@@ -28,12 +26,12 @@ export class CategoriesComponent {
   }
 
   ngOnInit(){
-    this.filterSortService.filterSort$.subscribe(filterSort => {
-      this.categories.forEach((category: any) => {
-          if (filterSort.categories) {
-          category.checked = filterSort.categories.includes(category.value);
-        }
-        });
+    this.filterSortService.filterSort$.subscribe((filterSort) => {
+      this.categories = this.categories.map((category: any) => ({
+        ...category,
+        checked: filterSort.categories ?
+          filterSort.categories.includes(category.value) : category.checked
+      }));
     });
   }
 
@@ -41,13 +39,12 @@ export class CategoriesComponent {
     const selectedCateogries= this.categories
     .filter((category: any) => category.checked)
     .map((category: any) => category.value);
-    console.log("setting categories "+ selectedCateogries);
 
     this.filterSortService.setFilters(selectedCateogries);
   }
 
   clear() {
-    this.categories.forEach((category: any)=> (category.checked = false));
+    this.categories = this.categories.map((category: any)=> ({...category, checked: false}));
     this.setCategories();
   }
 }

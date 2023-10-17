@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { CartServiceService } from './cart/service/cart-service.service';
 import { FormsModule } from '@angular/forms';
 import { FilterSortServiceService } from './shared/filterSort/service/filter-sort-service.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,13 +22,14 @@ export class AppComponent {
   products:Product[]=[];
   sortPropertySelected!:string;
   sortType:'ASC'| 'DESC' ='ASC';
+  currentFilterSort:Subscription|undefined;
   sortProperties: any=[
     {name:'Name',id:'1',value:'name'},
     {name:'Price',id:'2',value:'price'}
   ];
 
   constructor(
-    private photoServices:ProductService,
+    private productServices:ProductService,
     private dialog:MatDialog,
     private cartService:CartServiceService,
     private filtersortService:FilterSortServiceService){
@@ -37,12 +39,21 @@ export class AppComponent {
   ngOnInit():void{
     this.cartItems = this.cartService.cartItems$;
     this.cartItems.subscribe(items => this.cartItemCount = items.length);
+    this.currentFilterSort=this.filtersortService.filterSort$
+    .subscribe(()=>{
+      this.loadProducts(this.currentPage);
+    })
     this.loadProducts(this.currentPage);
   }
   
+
+  ngOnDestroy():void{
+    return this.currentFilterSort && this.currentFilterSort.unsubscribe();
+  }
   
   loadProducts(page:number):void {
-    this.photoServices.getProducts(page).subscribe(res=>{
+    const filterSort= this.filtersortService.getFilterSort();
+    this.productServices.getProducts(page,filterSort).subscribe(res=>{
     this.products= res.data.data;
     this.featured = this.products.
       find(prod => prod.featured === true) || this.featured;
@@ -59,14 +70,11 @@ export class AppComponent {
   }
 
   nextPage(){
-    console.log("avanzo");
     if (this.currentPage+1<=9) this.currentPage++;
-    console.log("pagina actual " + this.currentPage);
     this.loadProducts(this.currentPage);
   } 
 
   prevPage(){
-    console.log("retrocedo");
     if (this.currentPage-1>=1) this.currentPage--;
     this.loadProducts(this.currentPage);
   }

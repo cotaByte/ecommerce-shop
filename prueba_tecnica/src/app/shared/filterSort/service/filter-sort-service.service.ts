@@ -17,7 +17,7 @@ filterSort$= this.filterSortSubject.asObservable();
     const newFilterSort: FilterSort = { ...currentFilterSort, categories };
     this.filterSortSubject.next(newFilterSort);
 
-    console.log("nuevo filter sort "+ JSON.stringify(newFilterSort));
+    console.log("nuevo filter sort "+ JSON.stringify(this.filterSortSubject.value));
     
   }
 
@@ -26,7 +26,7 @@ filterSort$= this.filterSortSubject.asObservable();
     const newSort: any = { key: sortKey, type: sortType };
     const newFilterSort: FilterSort = { ...currentFilterSort, sort: newSort };
     this.filterSortSubject.next(newFilterSort);
-    console.log("nuevo filter sort "+ JSON.stringify(newFilterSort));
+    console.log("nuevo filter sort "+ JSON.stringify(this.filterSortSubject.value));
   }
 
   getFilters(): any {
@@ -34,6 +34,10 @@ filterSort$= this.filterSortSubject.asObservable();
   }
 
   getSort():any{
-    return this.filterSortSubject.value.sort|| {}
+    return this.filterSortSubject.value.sort || {}
+  }
+
+  getFilterSort():any{
+    return this.filterSortSubject.value;
   }
 }

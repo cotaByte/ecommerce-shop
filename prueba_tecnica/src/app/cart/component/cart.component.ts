@@ -18,7 +18,6 @@ export class CartComponent {
   ngOnInit() {
     this.cartItems = this.cartService.cartItems$;
     this.cartItems.subscribe(items => this.cartItemCount = items.length);
-    //this.cartItems.subscribe(Product => this.cartTotalAmount += Product.price);
   }
 
   clearCart(){

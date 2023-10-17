@@ -1,6 +1,6 @@
 <div class="product">
 
-    <div *ngIf="product?.featured===true"class="head-title">
+    <div *ngIf="product?.featured"class="head-title">
         <span class="title">{{product?.name}}</span>
         <button (click)="addToCart()">ADD TO CART</button>
     </div>
@@ -29,7 +29,7 @@
             <p class="prod-price">{{product?.currency}} {{product?.price}}</p>
         </div>
 
-        <div  *ngIf="product?.featured===true"class=" split-section footer-feature">
+        <div  *ngIf="product?.featured"class=" split-section footer-feature">
             <article class="text-section">
             <div class="title">
                 <span> About the {{product?.name}}</span>
@@ -39,7 +39,7 @@
             </article>
             
             <article>
-            <div class="title rigth">
+            <div class="title right">
                 <span >People also buy</span>
             </div>
             <div class="also-buy-items">  
