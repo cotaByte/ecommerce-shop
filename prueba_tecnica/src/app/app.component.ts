@@ -7,6 +7,7 @@ import { CartComponent } from './cart/component/cart.component';
 import { Observable } from 'rxjs/internal/Observable';
 import { CartServiceService } from './cart/service/cart-service.service';
 import { FormsModule } from '@angular/forms';
+import { FilterSortServiceService } from './shared/filterSort/service/filter-sort-service.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,7 +20,7 @@ export class AppComponent {
   featured!: Product | undefined;
   products:Product[]=[];
   sortPropertySelected!:string;
-  sortType:string="ASC";
+  sortType:'ASC'| 'DESC' ='ASC';
   sortProperties: any=[
     {name:'Name',id:'1',value:'name'},
     {name:'Price',id:'2',value:'price'}
@@ -28,7 +29,8 @@ export class AppComponent {
   constructor(
     private photoServices:ProductService,
     private dialog:MatDialog,
-    private cartService:CartServiceService){
+    private cartService:CartServiceService,
+    private filtersortService:FilterSortServiceService){
     }
 
 
@@ -69,4 +71,14 @@ export class AppComponent {
     this.loadProducts(this.currentPage);
   }
 
+
+  changeSorting(){
+    this.sortType= this.sortType==='ASC'? 'DESC':'ASC';
+    this.setChangeSorting();
+  }
+
+  setChangeSorting(){
+    const sortingProperty= this.sortPropertySelected || this.sortProperties[0];
+    this.filtersortService.setSort(sortingProperty,this.sortType);
+  }
 }

@@ -13,9 +13,9 @@
     <article class="head-title flex-row ">
       <span class="title">Photography <span style="color: #656565;">/ Premium photos</span></span>
       <img  class="cat-modal icon" src="../assets/img/filters.png" alt="filters" (click)="openCategories()">
-      <img class="sorting icon" src="../assets/img/sort_arrows.png" alt="sorting">
+      <img class="sorting icon" src="../assets/img/sort_arrows.png" alt="sorting" title="Ordenado ascendente" (click)="changeSorting()">
       <label for="sorting" class="sorting">Sort by:</label>
-      <select id="sorting-cmb" [(ngModel)]="sortPropertySelected" class="sorting cmb" >
+      <select id="sorting-cmb" [(ngModel)]="sortPropertySelected" class="sorting cmb" (change)="setChangeSorting()" >
         <option  value=""></option>
         <option  *ngFor="let i of sortProperties" value="{{i.value}}">{{i.name}}</option>
       </select>

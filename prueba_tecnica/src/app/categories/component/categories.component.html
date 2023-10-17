@@ -1,9 +1,15 @@
 <div *ngIf="!modal">
     <h1>Cateogry</h1>
-    <form class="category-list">
+    <form class="category-list" name="category-form">
         <ul *ngFor="let i of categories">
                 <label>
-                    <input type="checkbox" id="{{i.id}}" value="{{i.value}}"/>
+                    <input 
+                    type="checkbox" 
+                    id="{{i.id}}" 
+                    value="{{i.value}}" 
+                    [(ngModel)]="i.checked" 
+                    (change)="setCategories()" 
+                    [ngModelOptions]="{standalone: true}" />
                     {{i.name}}
                 </label>
         </ul>
@@ -19,7 +25,12 @@
     <form class="category-list">
         <ul *ngFor="let i of categories">
                 <label>
-                    <input type="checkbox" id="{{i.id}}" value="{{i.value}}"/>
+                    <input 
+                    type="checkbox" 
+                    id="{{i.id}}" 
+                    value="{{i.value}}"  
+                    [(ngModel)]="i.checked" 
+                    [ngModelOptions]="{standalone: true}" />
                     {{i.name}}
                 </label>
                 
@@ -27,7 +38,7 @@
             <hr>
         </form>
         <div class="footer-buttons">
-            <button class="btn-clear" (click)="limpia()">CLEAR</button>
-            <button class="btn-save" (click)="guarda();">SAVE</button>
+            <button class="btn-clear" (click)="clear()">CLEAR</button>
+            <button class="btn-save" (click)="setCategories();">SAVE</button>
         </div>
 </div>
