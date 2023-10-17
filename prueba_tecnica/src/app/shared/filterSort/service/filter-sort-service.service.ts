@@ -14,15 +14,17 @@ filterSort$= this.filterSortSubject.asObservable();
 
   setFilters(categories: string[]) {
     const currentFilterSort = this.filterSortSubject.value;
-    const newFilterSort: FilterSort = { ...currentFilterSort, categories };
-    this.filterSortSubject.next(newFilterSort);
-
-    console.log("nuevo filter sort "+ JSON.stringify(this.filterSortSubject.value));
-    
+  
+    if (categories.length) {
+      const newFilterSort: FilterSort = { ...currentFilterSort, categories };
+      this.filterSortSubject.next(newFilterSort);
+    } else {
+      const { categories: oldCategories, ...rest } = currentFilterSort;
+      this.filterSortSubject.next(rest);
+    }
   }
 
   setSort(sortKey: string, sortType: string) {
-
     const currentFilterSort = this.filterSortSubject.value;
 
     if (sortKey) {
@@ -33,7 +35,6 @@ filterSort$= this.filterSortSubject.asObservable();
       const { sort, ...rest } = currentFilterSort;
       this.filterSortSubject.next(rest);
     }
-    console.log("nuevo filter sort "+ JSON.stringify(this.filterSortSubject.value));
   }
 
   getFilters(): any {

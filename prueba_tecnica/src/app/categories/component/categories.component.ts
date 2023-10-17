@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FilterSortServiceService } from 'src/app/shared/filterSort/service/filter-sort-service.service';
-
 @Component({
   selector: 'categories',
   templateUrl: './categories.component.html',
@@ -8,7 +7,7 @@ import { FilterSortServiceService } from 'src/app/shared/filterSort/service/filt
 })
 export class CategoriesComponent {
   @Input () modal:boolean=true;
-  @Output() openModal = new EventEmitter<void>();
+
   categories: any=[]
 
 

@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { ProductService } from './product/services/product-service.service';
 import { Product } from './product/model/product';
 import { CategoriesComponent } from './categories/component/categories.component';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { CartComponent } from './cart/component/cart.component';
 import { Observable } from 'rxjs/internal/Observable';
 import { CartServiceService } from './cart/service/cart-service.service';
-import { FormsModule } from '@angular/forms';
 import { FilterSortServiceService } from './shared/filterSort/service/filter-sort-service.service';
 import { Subscription } from 'rxjs';
 @Component({
@@ -14,6 +13,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less']
 })
+
 export class AppComponent {
   currentPage:number=1;
   cartItems!: Observable<Product[]>;
@@ -35,18 +35,16 @@ export class AppComponent {
     private filtersortService:FilterSortServiceService){
     }
 
-
   ngOnInit():void{
     this.cartItems = this.cartService.cartItems$;
     this.cartItems.subscribe(items => this.cartItemCount = items.length);
     this.currentFilterSort=this.filtersortService.filterSort$
     .subscribe(()=>{
       this.loadProducts(this.currentPage);
-    })
+    });
     this.loadProducts(this.currentPage);
   }
   
-
   ngOnDestroy():void{
     return this.currentFilterSort && this.currentFilterSort.unsubscribe();
   }
@@ -86,7 +84,6 @@ export class AppComponent {
   }
 
   setChangeSorting(){
-    debugger;
     const sortingProperty= this.sortPropertySelected || '';
     this.filtersortService.setSort(sortingProperty,this.sortType);
   }

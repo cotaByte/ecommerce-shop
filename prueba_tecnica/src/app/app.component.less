@@ -4,7 +4,6 @@
 @black: #000;
 @grey: #656565;
 
-
 header {
     display: flex;
     margin: 25px 0px;
@@ -45,7 +44,7 @@ footer>button {
 }
 
 footer>button:disabled {
-    border: 2px solid #474747;
+    border: 2px solid #838181;
     background-color: silver;
     color: #474747;
 }
@@ -60,7 +59,6 @@ footer>button:disabled {
     max-height: 14px;
     text-align: center;
     margin: 8px 40px 0 0;
-    /* Centra el texto dentro del badge */
 }
 
 .filler {
@@ -79,7 +77,6 @@ footer>button:disabled {
 }
 
 .head-title {
-
     margin-bottom: 20px;
     display: flex;
     gap: 12px;
@@ -152,6 +149,7 @@ article>p {
 }
 
 button {
+    cursor: pointer;
     order: 3;
     background-color: @black;
     color: #fff;
@@ -181,11 +179,6 @@ button {
 .cat-modal {
     display: none;
 }
-
-ng::deep .mat-mdc-dialog-container {
-    position: absolute;
-}
-
 
 
 /* Mobile avg widht resolution*/
